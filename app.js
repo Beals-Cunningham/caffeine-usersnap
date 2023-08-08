@@ -1,8 +1,19 @@
-//node.js Hello World
-var http = require('http');
-var port = process.env.PORT || 8668;
-http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello World\n');
-}).listen(port);
-console.log("Server running at http://localhost:%d", port);
+const express = require('express')
+const app = express()
+const pug = require('pug')
+
+app.set('view engine', 'pug')
+
+const helloWorld = pug.compileFile('hello-world.pug')
+
+app.get('/helloWorld', function (req, res) {
+  res.send(helloWorld())
+})
+
+app.get('/bootstrap/css', function (req, res) {
+    //send file as MIME CSS type
+    res.type('text/css')
+    res.sendFile(__dirname + '/node_modules/bootstrap/dist/css/bootstrap.min.css')
+})
+
+app.listen(8668)
