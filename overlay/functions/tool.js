@@ -12,6 +12,11 @@ let textStyles = ["Georgia", "Arial"]
 let fontStyle = textStyles[0]
 
 $(document).ready(function(){
+
+    let url = new URL(window.location.href)
+    let site = url.searchParams.get("site")
+    $('#website').attr('src', site)
+
     let grabber = $('#grabber')
 
     grabber.on('mousedown', function(e){
