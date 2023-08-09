@@ -3,7 +3,6 @@ const $ = window.jQuery
 
 function websiteScroll(e){
     //on scroll, scroll in the iframe with id #website
-    e.preventDefault()
     let iframe = $('#website')
     iframe.scrollTop(iframe.scrollTop() + e.deltaY)
     

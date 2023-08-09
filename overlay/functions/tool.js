@@ -26,7 +26,8 @@ $(document).ready(function(){
     let comment = $('#tool-comment')
     let counter = $('#tool-counter')
     let arrow = $('#tool-arrow')
-    let tools = [select, brush, square, circle, text, comment, counter, arrow]
+    let shade = $('#tool-shade')
+    let tools = [select, brush, square, circle, text, comment, counter, arrow, shade]
 
     let strokeColorEl = $('#to-stroke')
 
@@ -117,6 +118,9 @@ function setActiveTool(p, strokeColor){
     else if (t == 'tool-arrow'){
         useArrow()
     }
+    else if (t == 'tool-shade'){
+        useShade()
+    }
     else if (t == 'tool-select-done'){
         useSelect()
     }
@@ -160,7 +164,17 @@ function useArrow(){
 
 }
 
+function useShade(){
+    $('#ts-p').css('display', 'none')
+    $('#ts-s').css('display', '')
+    c.canvas.width = $('#website').width()
+    c.canvas.height = $('#website').height()
+    c.fillStyle = 'rgba(0, 0, 0, 0.5)'
+    c.fillRect(0, 0, c.canvas.width, c.canvas.height)
+}
+
 function useSelect(){
+    $('#website').css('pointer-events', 'auto')
     $('#ts-p').css('display', '')
     $('#ts-s').css('display', 'none')
     $('#tool-options').removeClass()
