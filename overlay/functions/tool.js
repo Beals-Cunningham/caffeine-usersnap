@@ -3,10 +3,13 @@ const $ = window.jQuery
 import Brush from '/tool/brush'
 import Rectangle from '/tool/rectangle'
 import Circle from '/tool/circle'
+import Text from '/tool/text'
 
 let c = null
 let strokeColor = '#c87832'
 let lineWidth = 3
+let textStyles = ["Georgia", "Arial"]
+let fontStyle = textStyles[0]
 
 $(document).ready(function(){
     let select = $('#tool-select-done')
@@ -41,6 +44,32 @@ $(document).ready(function(){
             lineWidth = 1
         }
         console.log(lineWidth)
+    })
+
+    let textStyleEl = $('#to-text')
+    textStyleEl.on('click', function(e){
+        if (fontStyle == "Georgia"){
+            fontStyle = "Arial"
+            $('#to-text').css('display', 'none')
+            $('#to-text2').css('display', 'block')
+        } else {
+            fontStyle = "Georgia"
+            $('#to-text').css('display', 'block')
+            $('#to-text2').css('display', 'none')
+        }
+    })
+
+    let textStyleEl2 = $('#to-text2')
+    textStyleEl2.on('click', function(e){
+        if (fontStyle == "Georgia"){
+            fontStyle = "Arial"
+            $('#to-text').css('display', 'none')
+            $('#to-text2').css('display', 'block')
+        } else {
+            fontStyle = "Georgia"
+            $('#to-text').css('display', 'block')
+            $('#to-text2').css('display', 'none')
+        }
     })
 
     const canvas = document.getElementById("overlay-canvas")
@@ -101,6 +130,7 @@ function useCircle(){
 }
 
 function useText(){
+    Text(c, strokeColor, lineWidth)
 
 }
 
@@ -117,7 +147,11 @@ function useArrow(){
 }
 
 function useSelect(){
-
+    $('#tool-options').removeClass()
+    $('#tool-options').addClass('tool-option-disabled')
+    $('#overlay-canvas').off('mousedown')
+    $('#overlay-canvas').off('mousemove')
+    $('#overlay-canvas').off('mouseup')
 }
 
-export {strokeColor, lineWidth}
+export {strokeColor, lineWidth, fontStyle}

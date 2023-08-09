@@ -5,7 +5,7 @@ const Brush = (p, strokeColor, lineWidth) => {
     c = p
     c.canvas.width = $(window).width()
     c.canvas.height = $(window).height()
-    console.log('Circle', c)
+    console.log('Brush', c)
 
     $('#overlay-canvas').off('mousedown')
     $('#overlay-canvas').off('mousemove')
