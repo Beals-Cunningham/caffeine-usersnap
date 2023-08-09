@@ -177,9 +177,10 @@ function useShade(){
     $('#tool-options').addClass('tool-option-disabled')
     $('#ts-p').css('display', 'none')
     $('#ts-s').css('display', '')
-    c.canvas.width = $('#website').width()
-    c.canvas.height = $('#website').height()
-    c.fillStyle = 'rgba(0, 0, 0, 0.5)'
+    $('#overlay-canvas').off('mousedown')
+    $('#overlay-canvas').off('mousemove')
+    $('#overlay-canvas').off('mouseup')
+    c.fillStyle = 'rgba(0, 0, 0, 0.25)'
     c.fillRect(0, 0, c.canvas.width, c.canvas.height)
 }
 
