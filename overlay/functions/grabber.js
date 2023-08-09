@@ -23,6 +23,7 @@ function dragEnd(e){
 }
 
 
+
 $(document).ready(function(){
     $('#grabber').on('dragstart', dragStart)
     $('#grabber').on('dragend', dragEnd)

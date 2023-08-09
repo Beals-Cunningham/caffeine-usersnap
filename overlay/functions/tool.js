@@ -12,6 +12,12 @@ let textStyles = ["Georgia", "Arial"]
 let fontStyle = textStyles[0]
 
 $(document).ready(function(){
+    let grabber = $('#grabber')
+
+    grabber.on('mousedown', function(e){
+        $('#website').css('pointer-events', 'none')
+    })
+
     let select = $('#tool-select-done')
     let brush = $('#tool-brush')
     let square = $('#tool-rectangle')
@@ -117,19 +123,27 @@ function setActiveTool(p, strokeColor){
 }
 
 function useBrush(){
+    $('#ts-p').css('display', 'none')
+    $('#ts-s').css('display', '')
     Brush(c, strokeColor, lineWidth)
 }
 
 function useRectangle(){
+    $('#ts-p').css('display', 'none')
+    $('#ts-s').css('display', '')
     Rectangle(c, strokeColor, lineWidth)
 }
 
 function useCircle(){
+    $('#ts-p').css('display', 'none')
+    $('#ts-s').css('display', '')
     Circle(c, strokeColor, lineWidth)
 
 }
 
 function useText(){
+    $('#ts-p').css('display', 'none')
+    $('#ts-s').css('display', '')
     Text(c, strokeColor, lineWidth)
 
 }
@@ -147,11 +161,15 @@ function useArrow(){
 }
 
 function useSelect(){
+    $('#ts-p').css('display', '')
+    $('#ts-s').css('display', 'none')
     $('#tool-options').removeClass()
     $('#tool-options').addClass('tool-option-disabled')
     $('#overlay-canvas').off('mousedown')
     $('#overlay-canvas').off('mousemove')
     $('#overlay-canvas').off('mouseup')
+    c.canvas.width = 0
+    c.canvas.height = 0
 }
 
 export {strokeColor, lineWidth, fontStyle}

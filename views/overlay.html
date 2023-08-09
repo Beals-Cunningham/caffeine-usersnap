@@ -7,6 +7,7 @@
     <script src="/bootstrap/js"></script>
     <script src="/bootstrap/css"></script>
     <script type="module" src="/overlay/functions/grabber"></script>
+    <script type="module" src="/overlay/functions/scroll"></script>
     <script type="module" src="/overlay/functions/tool"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -14,16 +15,18 @@
     <script src="https://kit.fontawesome.com/2c3b1c4abb.js" crossorigin="anonymous"></script>
 
 <body>
-    <canvas class = "overlay-canvas" id = "overlay-canvas"></canvas>
+    
     <div class = "overlay-toolbar-right-container">
         <div class = "right-toolbar">
-            <div class = "grabber" id='grabber' draggable="true">
+            <div class = "grabber" id='grabber' draggable="true" >
                 <i class="fas fa-ellipsis tool-icon"></i>
             </div>
             <div class = "spacer-1"></div>
             <div class = "tool active" id="tool-select-done">
-                <i class="fas fa-arrow-pointer tool-icon"></i>
+                <i class="fas fa-arrow-pointer tool-icon" id = "ts-p"></i>
+                <i class="far fa-circle-check tool-icon" id = "ts-s" style="display:none"></i>
             </div>
+
             <div class = "spacer-7"></div>
             <div class = "tool" id="tool-brush">
                 <i class="fas fa-paint-brush tool-icon"></i>
@@ -63,6 +66,8 @@
                 </div> 
         </div>
     </div>
+    <iframe class = "website" id = "website" src = "https://www.westcentraleq.com/"></iframe>
+    <canvas class = "overlay-canvas" id = "overlay-canvas"></canvas>
 </body>
 </head>
 

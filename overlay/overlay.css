@@ -26,6 +26,16 @@ body{
     z-index:40;
 }
 
+#website{
+    position: absolute;
+    top:0;
+    left:0;
+    background-color:rgba(0,0,0,0);
+    z-index:30;
+    width: 100vw;
+    height: 100vh;
+}
+
 .overlay-toolbar-right-container{
     position: absolute;
     right: 2vw;

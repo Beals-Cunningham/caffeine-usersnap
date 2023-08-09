@@ -21,10 +21,10 @@ app.get('/overlay/functions/grabber', function (req, res) {
     res.sendFile('/overlay/functions/grabber.js', { root: '.'})
 })
 
-app.get('/overlay/functions/brush', function (req, res) {
+app.get('/overlay/functions/scroll', function (req, res) {
     //send file as MIME JS type
     res.type('text/javascript')
-    res.sendFile('/overlay/functions/brush.js', { root: '.'})
+    res.sendFile('/overlay/functions/scroll.js', { root: '.'})
 })
 
 app.get('/overlay/functions/tool', function (req, res) {
