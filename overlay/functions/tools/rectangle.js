@@ -3,8 +3,6 @@ import {strokeColor, lineWidth} from "/overlay/functions/tool"
 
 const Rectangle = (p, strokeColor, lineWidth) => {
     c = p
-    c.canvas.width = $(window).width()
-    c.canvas.height = $(window).height()
     console.log('Rectangle', c)
     $('#overlay-canvas').off('mousedown')
     $('#overlay-canvas').off('mousemove')

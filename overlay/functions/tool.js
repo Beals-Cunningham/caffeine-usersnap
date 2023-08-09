@@ -89,6 +89,9 @@ $(document).ready(function(){
 
     tools.forEach(function(tool){
         tool.on('click', function(){
+            if (c.canvas.width != $('#website').width() || c.canvas.height != $('#website').height()){
+            c.canvas.width = $('#website').width()
+            c.canvas.height = $('#website').height()}
             tool.addClass('active')
             setActiveTool(tool)
             tools.forEach(function(tool2){

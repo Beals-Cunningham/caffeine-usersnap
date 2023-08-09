@@ -3,8 +3,6 @@ import {strokeColor, lineWidth, fontStyle} from "/overlay/functions/tool"
 
 const Text = (p, strokeColor, lineWidth) => {
     c = p
-    c.canvas.width = $(window).width()
-    c.canvas.height = $(window).height()
     console.log('Text', c)
     $('#overlay-canvas').off('mousedown')
     $('#overlay-canvas').off('mousemove')

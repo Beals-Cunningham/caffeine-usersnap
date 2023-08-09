@@ -3,8 +3,6 @@ import {strokeColor, lineWidth} from "/overlay/functions/tool"
 
 const Brush = (p, strokeColor, lineWidth) => {
     c = p
-    c.canvas.width = $(window).width()
-    c.canvas.height = $(window).height()
     console.log('Brush', c)
 
     $('#overlay-canvas').off('mousedown')

@@ -3,8 +3,6 @@ import {strokeColor, lineWidth} from "/overlay/functions/tool"
 
 const Circle = (p, strokeColor, lineWidth) => {
     c = p
-    c.canvas.width = $(window).width()
-    c.canvas.height = $(window).height()
     console.log('Circle', c)
 
     $('#overlay-canvas').off('mousedown')
