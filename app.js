@@ -21,6 +21,30 @@ app.get('/overlay/functions/grabber', function (req, res) {
     res.sendFile('/overlay/functions/grabber.js', { root: '.'})
 })
 
+app.get('/overlay/functions/brush', function (req, res) {
+    //send file as MIME JS type
+    res.type('text/javascript')
+    res.sendFile('/overlay/functions/brush.js', { root: '.'})
+})
+
+app.get('/overlay/functions/tool', function (req, res) {
+    //send file as MIME JS type
+    res.type('text/javascript')
+    res.sendFile('/overlay/functions/tool.js', { root: '.'})
+})
+
+app.get('/tool/brush', function (req, res) {
+    //send file as MIME JS type
+    res.type('text/javascript')
+    res.sendFile('/overlay/functions/tools/brush.js', { root: '.'})
+})
+
+app.get('/tool/rectangle', function (req, res) {
+    //send file as MIME JS type
+    res.type('text/javascript')
+    res.sendFile('/overlay/functions/tools/rectangle.js', { root: '.'})
+})
+
 app.get('/overlay', function (req, res) {
     res.type('text/html')
     res.sendFile('/views/overlay.html', { root: '.'})

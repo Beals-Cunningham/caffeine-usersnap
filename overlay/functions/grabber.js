@@ -1,8 +1,6 @@
 import '/jquery/js'
 const $ = window.jQuery
 
-//use the DragAndDrop API to move ".overlay-toolbar-right-container" to the mouse position
-
 function dragStart(e){
 
 }

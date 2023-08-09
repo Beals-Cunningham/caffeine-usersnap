@@ -7,22 +7,25 @@
     <script src="/bootstrap/js"></script>
     <script src="/bootstrap/css"></script>
     <script type="module" src="/overlay/functions/grabber"></script>
+    <script type="module" src="/overlay/functions/tool"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <script src="https://kit.fontawesome.com/2c3b1c4abb.js" crossorigin="anonymous"></script>
 
 <body>
+    <canvas class = "overlay-canvas" id = "overlay-canvas"></canvas>
     <div class = "overlay-toolbar-right-container">
         <div class = "right-toolbar">
             <div class = "grabber" id='grabber' draggable="true">
                 <i class="fas fa-ellipsis tool-icon"></i>
             </div>
-            <div class = "tool" id="tool-select-done">
+            <div class = "spacer-1"></div>
+            <div class = "tool active" id="tool-select-done">
                 <i class="fas fa-arrow-pointer tool-icon"></i>
             </div>
             <div class = "spacer-7"></div>
-            <div class = "tool active" id="tool-brush">
+            <div class = "tool" id="tool-brush">
                 <i class="fas fa-paint-brush tool-icon"></i>
             </div>
             <div class = "tool" id="tool-rectangle">
@@ -43,6 +46,17 @@
             <div class = "tool" id="tool-arrow">
                 <i class="fas fa-long-arrow-alt-right tool-icon"></i>
             </div>
+        </div>
+        <div class = "spacer-3"></div>
+            <div class = "right-toolbar tool-option-disabled" id ="tool-options">
+                <div class = "tool">
+                    <i class="fas fa-square" id = "to-stroke"></i>
+                    <i class="far fa-square" id = 'to-fill'></i>
+                    <div style = "height:100%;padding-top:4px;padding-bottom:4px;display:flex;flex-direction:column;padding-left:8px">
+                        <i class="fas fa-plus" id = 'to-plus' style = "height:50%"></i>
+                        <i class="fas fa-minus" id = 'to-minus' style = "height:50%"></i>
+                    </div>
+                </div> 
         </div>
     </div>
 </body>
