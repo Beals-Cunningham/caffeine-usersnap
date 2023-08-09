@@ -6,7 +6,7 @@ body{
 
 :root{
 
-    --main-color: hsl(17, 4%, 34%);
+    --main-color: hsl(17, 4%, 30%);
     --hover: hsl(17, 4%, 44%);
     --background: hsl(17, 4%, 57%);
     --background-hover: hsl(17, 4%, 67%);

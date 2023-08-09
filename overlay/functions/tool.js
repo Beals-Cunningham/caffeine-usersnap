@@ -170,6 +170,8 @@ function useArrow(){
 }
 
 function useShade(){
+    $('#tool-options').removeClass()
+    $('#tool-options').addClass('tool-option-disabled')
     $('#ts-p').css('display', 'none')
     $('#ts-s').css('display', '')
     c.canvas.width = $('#website').width()
