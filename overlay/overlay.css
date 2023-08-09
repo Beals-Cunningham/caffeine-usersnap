@@ -36,6 +36,7 @@ body{
     align-items: end;
     justify-content: end;
     z-index:999;
+    width: calc(var(--square-size) *3);
 }
 
 .right-toolbar{
@@ -132,17 +133,21 @@ body{
     transition: .2s all;
 }
 
-#tool-options.tool-option-disabled .tool, #tool-options.tool-option-disabled .tool svg{
+#tool-options.tool-option-disabled .tool, #tool-options.tool-option-disabled .tool input{
+    width: 0px;
     height: 0px;
+    opacity: 0;
+    padding: 0;
 }
 
-#tool-options.tool-option-enabled{
-    width: calc(2.5* var(--square-size) + 8px);
+#tool-options.tool-option-enabled.to-rectangle{
+    width: calc(2.3* var(--square-size) + 8px);
 }
 
-#tool-options.tool-option-enabled .tool{
+
+#tool-options.tool-option-enabled.to-rectangle .tool{
+    width: calc(2.3* var(--square-size) + 4px);
     height: var(--square-size);
-    width: calc(2.5* var(--square-size) + 4px);
 }
 
 #tool-options .tool{
@@ -150,6 +155,27 @@ body{
     gap: 4px;
 }
 
-#tool-options.tool-option-enabled .tool svg{
+#tool-options.to-rectangle #to-fill{
+    display: none;
+    width: 0;
+}
+
+#tool-options.tool-option-enabled .tool input{
     height: calc(100% - 4px);
+    width: var(--square-size);
+    opacity: 1;
+}
+
+#to-plus, #to-minus{
+    color: var(--background);
+    transition: .1s all;
+}
+
+#to-plus:hover, #to-minus:hover{
+    color: var(--active);
+}
+
+#to-line-width{
+    padding-left: 4px;
+    padding-right: 4px;
 }

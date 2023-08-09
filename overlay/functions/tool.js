@@ -4,6 +4,8 @@ import Brush from '/tool/brush'
 import Rectangle from '/tool/rectangle'
 
 let c = null
+let strokeColor = '#c87832'
+let lineWidth = 3
 
 $(document).ready(function(){
     let select = $('#tool-select-done')
@@ -15,6 +17,30 @@ $(document).ready(function(){
     let counter = $('#tool-counter')
     let arrow = $('#tool-arrow')
     let tools = [select, brush, square, circle, text, comment, counter, arrow]
+
+    let strokeColorEl = $('#to-stroke')
+
+    strokeColorEl.on('change', function(e){
+        strokeColor = e.target.value
+    })
+
+    let lineSizePlus = $('#to-plus')
+    let lineSizeMinus = $('#to-minus')
+
+    lineSizePlus.on('click', function(){
+        lineWidth += 2
+        $('#to-line-width').text(lineWidth)
+        console.log(lineWidth)
+    })
+
+    lineSizeMinus.on('click', function(){
+        lineWidth -= 2
+        $('#to-line-width').text(lineWidth)
+        if (lineWidth < 1){
+            lineWidth = 1
+        }
+        console.log(lineWidth)
+    })
 
     const canvas = document.getElementById("overlay-canvas")
     c = canvas.getContext("2d")
@@ -32,13 +58,13 @@ $(document).ready(function(){
     })
 })
 
-function setActiveTool(p){
+function setActiveTool(p, strokeColor){
     let t = p.attr('id')
     if (t == 'tool-brush'){
-        useBrush()
+        useBrush(strokeColor)
     }
     else if (t == 'tool-rectangle'){
-        useRectangle()
+        useRectangle(strokeColor)
     }
     else if (t == 'tool-circle'){
         useCircle()
@@ -61,11 +87,11 @@ function setActiveTool(p){
 }
 
 function useBrush(){
-    Brush(c)
+    Brush(c, strokeColor)
 }
 
 function useRectangle(){
-    Rectangle(c)
+    Rectangle(c, strokeColor, lineWidth)
 }
 
 function useCircle(){
@@ -91,3 +117,5 @@ function useArrow(){
 function useSelect(){
 
 }
+
+export {strokeColor, lineWidth}

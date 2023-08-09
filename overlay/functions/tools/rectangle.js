@@ -1,6 +1,7 @@
 let c = null
+import {strokeColor, lineWidth} from "/overlay/functions/tool"
 
-const Rectangle = (p) => {
+const Rectangle = (p, strokeColor, lineWidth) => {
     c = p
     c.canvas.width = $(window).width()
     c.canvas.height = $(window).height()
@@ -8,8 +9,11 @@ const Rectangle = (p) => {
     $('#overlay-canvas').on('mousedown', mouseDown)
     $('#overlay-canvas').on('mousemove', mouseMove)
     $('#overlay-canvas').on('mouseup', mouseUp)
+    $('#tool-options').removeClass()
     $('#tool-options').addClass('tool-option-enabled')
-    $('#tool-options').removeClass('tool-option-disabled')
+    $('#tool-options').addClass('to-rectangle')
+    $('#to-stroke').val(strokeColor)
+    $('#to-line-width').text(lineWidth)
 }
 
 function getMousePos(canvas, evt) {
@@ -37,9 +41,10 @@ function mouseDown(e){
     rect = {x:x, y:x, w:w, h:h}
     console.log(rect)
     drawing = true
-    //draw the rectangle on the canvas with a red fill
-    c.fillStyle = 'red'
-    c.fillRect(rect.x, rect.y, rect.w, rect.h)
+    c.strokeStyle = strokeColor
+    c.lineWidth = lineWidth
+
+    c.strokeRect(rect.x, rect.y, rect.w, rect.h)
 }
 
 function mouseMove(e){
@@ -52,9 +57,10 @@ function mouseMove(e){
         h = y - rect.y
         rect.w = w
         rect.h = h
-        //draw the rectangle on the canvas with a red fill
-        c.fillStyle = 'red'
-        c.fillRect(rect.x, rect.y, rect.w, rect.h)
+        c.strokeStyle = strokeColor
+        c.lineWidth = lineWidth
+ 
+        c.strokeRect(rect.x, rect.y, rect.w, rect.h)
     }
 }
 
