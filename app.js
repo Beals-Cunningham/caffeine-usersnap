@@ -39,6 +39,12 @@ app.get('/tool/brush', function (req, res) {
     res.sendFile('/overlay/functions/tools/brush.js', { root: '.'})
 })
 
+app.get('/tool/circle', function (req, res) {
+    //send file as MIME JS type
+    res.type('text/javascript')
+    res.sendFile('/overlay/functions/tools/circle.js', { root: '.'})
+})
+
 app.get('/tool/rectangle', function (req, res) {
     //send file as MIME JS type
     res.type('text/javascript')

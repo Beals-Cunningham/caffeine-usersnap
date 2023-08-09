@@ -2,6 +2,7 @@ import '/jquery/js'
 const $ = window.jQuery
 import Brush from '/tool/brush'
 import Rectangle from '/tool/rectangle'
+import Circle from '/tool/circle'
 
 let c = null
 let strokeColor = '#c87832'
@@ -61,10 +62,10 @@ $(document).ready(function(){
 function setActiveTool(p, strokeColor){
     let t = p.attr('id')
     if (t == 'tool-brush'){
-        useBrush(strokeColor)
+        useBrush()
     }
     else if (t == 'tool-rectangle'){
-        useRectangle(strokeColor)
+        useRectangle()
     }
     else if (t == 'tool-circle'){
         useCircle()
@@ -87,7 +88,7 @@ function setActiveTool(p, strokeColor){
 }
 
 function useBrush(){
-    Brush(c, strokeColor)
+    Brush(c, strokeColor, lineWidth)
 }
 
 function useRectangle(){
@@ -95,6 +96,7 @@ function useRectangle(){
 }
 
 function useCircle(){
+    Circle(c, strokeColor, lineWidth)
 
 }
 

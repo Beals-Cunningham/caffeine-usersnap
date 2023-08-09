@@ -16,14 +16,6 @@ const Rectangle = (p, strokeColor, lineWidth) => {
     $('#to-line-width').text(lineWidth)
 }
 
-function getMousePos(canvas, evt) {
-    var r = canvas.getBoundingClientRect()
-    return {
-      x: evt.pageX - r.left,
-      y: evt.pageY - r.top
-    }
-  }
-
 let drawing = false
 let rect = null
 let x = 0
