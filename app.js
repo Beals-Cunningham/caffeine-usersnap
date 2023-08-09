@@ -1,33 +1,48 @@
-const express = require('express')
+import express from 'express'
 const app = express()
-const pug = require('pug')
-var reload = require('reload')
 
-app.set('view engine', 'pug')
 
-app.get('/helloWorld', function (req, res) {
+
+app.get('/helloworld', function (req, res) {
     //Send /public/hello-world.html file as HTML 
     res.type('text/html')
-    res.sendFile(__dirname + '/public/hello-world.html')
+    res.sendFile('/views/hello-world.html', { root: '.'})
 })
+
+app.get('/overlay/css', function (req, res) {
+    //send file as MIME CSS type
+    res.type('text/css')
+    res.sendFile('/overlay/overlay.css', { root: '.'})
+})
+
+app.get('/overlay/functions/grabber', function (req, res) {
+    //send file as MIME JS type
+    res.type('text/javascript')
+    res.sendFile('/overlay/functions/grabber.js', { root: '.'})
+})
+
+app.get('/overlay', function (req, res) {
+    res.type('text/html')
+    res.sendFile('/views/overlay.html', { root: '.'})
+})
+
 
 app.get('/bootstrap/css', function (req, res) {
     //send file as MIME CSS type
     res.type('text/css')
-    res.sendFile(__dirname + '/node_modules/bootstrap/dist/css/bootstrap.min.css')
+    res.sendFile('/node_modules/bootstrap/dist/css/bootstrap.min.css', { root: '.'})
 })
 
 app.get('/bootstrap/js', function (req, res) {
     //send file as MIME JS type
     res.type('text/javascript')
-    res.sendFile(__dirname + '/node_modules/bootstrap/dist/js/bootstrap.min.js')
+    res.sendFile('/node_modules/bootstrap/dist/js/bootstrap.min.js', { root: '.'})
 })
 
-app.get('/reload/js', function (req, res) {
+app.get('/jquery/js', function (req, res) {
     //send file as MIME JS type
     res.type('text/javascript')
-    res.sendFile(__dirname + '/node_modules/reload/lib/reload.js')
+    res.sendFile('/node_modules/jquery/dist/jquery.min.js', { root: '.'})
 })
 
 app.listen(8668)
-reload(app)

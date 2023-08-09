@@ -3,19 +3,20 @@
   "version": "0.0.1",
   "description": "Easier site annotation tool for Caffeine RDE",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js && pug --watch views --out public"
+    "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@anduh/pug-cli": "^1.0.0-alpha8",
-    "@fortawesome/fontawesome-free": "^6.4.2",
     "bootstrap": "^5.3.1",
+    "browserify": "^17.0.0",
     "color": "^4.2.3",
     "express": "^4.18.2",
     "image-saver-nodejs": "^1.0.3",
+    "jquery": "^3.7.0",
     "nodemon": "^3.0.1",
     "pug": "^3.0.1",
     "reload": "^3.2.1",
