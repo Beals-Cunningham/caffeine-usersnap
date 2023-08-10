@@ -228,6 +228,7 @@ function useSelect(){
     $('#overlay-canvas').off('mouseup')
     //select all elements with id #blur-*
     $('[id^=blur-]').remove()
+    $('[id^=text-]').remove()
     //get the element under the mouse
     console.log(clicker.originalEvent.clientX)
     let _x = clicker.originalEvent.clientX

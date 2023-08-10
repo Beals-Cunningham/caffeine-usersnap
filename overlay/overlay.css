@@ -173,7 +173,7 @@ body{
 }
 
 #tool-options.tool-option-enabled.to-text{
-    width: calc(2.3* var(--square-size) + 8px);
+    width: calc(4* var(--square-size) + 8px);
 }
 
 
