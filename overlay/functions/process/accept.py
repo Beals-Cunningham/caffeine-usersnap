@@ -20,7 +20,7 @@ def save():
     global count
     count += 1
     global img
-    crop(img)
+    crop()
     img.save(''.join(['screenshot-',str(count),'.png']))
     return "<p>Screenshot saved</p>"
 
@@ -32,7 +32,7 @@ def reset_number():
 @app.route('/post_viewport_size', methods=['POST'])
 def post_viewport_size():
     global viewport_size
-    viewport_size = request.get_json()['viewport_size']
+    viewport_size = request.get_json()
     return "<p>Viewport size saved</p>"
 
 def crop():

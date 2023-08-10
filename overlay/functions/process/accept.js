@@ -7,7 +7,7 @@ import {Clear} from '/overlay/functions/tool'
 function postToPython(){
     let url = window.location.protocol + "//" + window.location.hostname + ":5000"
     $('#loading-toast').css('width', 'auto')
-    $('#loading-toast').css('opacity', '.6')
+    $('#loading-toast').css('opacity', '1')
     $('#loading-toast-p').css('opacity', '1')
     $.ajax({
         url: url,
