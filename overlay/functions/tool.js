@@ -4,6 +4,7 @@ import Brush from '/tool/brush'
 import Rectangle from '/tool/rectangle'
 import Circle from '/tool/circle'
 import Text from '/tool/text'
+import Blur from '/tool/blur'
 
 let c = null
 let strokeColor = '#c87832'
@@ -29,10 +30,10 @@ $(document).ready(function(){
     let circle = $('#tool-circle')
     let text = $('#tool-text')
     let comment = $('#tool-comment')
-    let counter = $('#tool-counter')
+    let blur = $('#tool-blur')
     let arrow = $('#tool-arrow')
     let shade = $('#tool-shade')
-    let tools = [select, brush, square, circle, text, comment, counter, arrow, shade]
+    let tools = [select, brush, square, circle, text, comment, blur, arrow, shade]
 
     let strokeColorEl = $('#to-stroke')
 
@@ -120,8 +121,8 @@ function setActiveTool(p, strokeColor){
     else if (t == 'tool-comment'){
         useComment()
     }
-    else if (t == 'tool-counter'){
-        useCounter()
+    else if (t == 'tool-blur'){
+        useBlur()
     }
     else if (t == 'tool-arrow'){
         useArrow()
@@ -164,8 +165,15 @@ function useComment(){
 
 }
 
-function useCounter(){
-
+function useBlur(){
+    $('#tool-options').removeClass()
+    $('#tool-options').addClass('tool-option-disabled')
+    $('#ts-p').css('display', 'none')
+    $('#ts-s').css('display', '')
+    $('#overlay-canvas').off('mousedown')
+    $('#overlay-canvas').off('mousemove')
+    $('#overlay-canvas').off('mouseup')
+    Blur(c, strokeColor, lineWidth)
 }
 
 function useArrow(){
@@ -193,6 +201,8 @@ function useSelect(){
     $('#overlay-canvas').off('mousedown')
     $('#overlay-canvas').off('mousemove')
     $('#overlay-canvas').off('mouseup')
+    //select all elements with id #blur-*
+    $('[id^=blur-]').remove()
     c.canvas.width = 0
     c.canvas.height = 0
 }
