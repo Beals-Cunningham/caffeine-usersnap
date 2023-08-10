@@ -109,7 +109,7 @@ $(document).ready(function(){
     })
 })
 
-function setActiveTool(p, strokeColor){
+function setActiveTool(p){
     let t = p.attr('id')
     if (t == 'tool-brush'){
         useBrush()

@@ -12,61 +12,62 @@
     <script src="https://kit.fontawesome.com/2c3b1c4abb.js" crossorigin="anonymous"></script>
 
 <body>
-    <iframe class = "website" id = "website" src = ""></iframe>
-    <canvas class = "overlay-canvas" id = "overlay-canvas"></canvas>
-    <div class = "overlay-toolbar-right-container">
-        <div class = "right-toolbar">
-            <div class = "grabber" id='grabber' draggable="true" >
+    <iframe class="website" id="website" src=""></iframe>
+    <canvas class="overlay-canvas" id="overlay-canvas"></canvas>
+    <div class="overlay-toolbar-right-container">
+        <div class="right-toolbar">
+            <div class="grabber" id='grabber' draggable="true">
                 <i class="fas fa-ellipsis tool-icon"></i>
             </div>
-            <div class = "spacer-1"></div>
-            <div class = "tool active" id="tool-select-done">
-                <i class="fas fa-arrow-pointer tool-icon" id = "ts-p"></i>
-                <i class="far fa-circle-check tool-icon" id = "ts-s" style="display:none"></i>
-                <i class="fas fa-trash tool-icon" id = 'ts-t' style="display:none"></i>
+            <div class="spacer-1"></div>
+            <div class="tool active" id="tool-select-done">
+                <i class="fas fa-arrow-pointer tool-icon" id="ts-p"></i>
+                <i class="far fa-circle-check tool-icon" id="ts-s" style="display:none"></i>
+                <i class="fas fa-trash tool-icon" id='ts-t' style="display:none"></i>
             </div>
 
-            <div class = "spacer-7"></div>
-            <div class = "tool" id="tool-brush">
+            <div class="spacer-7"></div>
+            <div class="tool" id="tool-brush">
                 <i class="fas fa-paint-brush tool-icon"></i>
             </div>
-            <div class = "tool" id="tool-rectangle">
+            <div class="tool" id="tool-rectangle">
                 <i class="far fa-square tool-icon"></i>
             </div>
-            <div class = "tool" id="tool-circle">
+            <div class="tool" id="tool-circle">
                 <i class="far fa-circle tool-icon"></i>
             </div>
-            <div class = "tool" id="tool-text">
+            <div class="tool" id="tool-text">
                 <i class="fas fa-font tool-icon"></i>
             </div>
-            <div class = "tool" id="tool-comment">
+            <div class="tool" id="tool-comment">
                 <i class="fas fa-comment-dots tool-icon"></i>
             </div>
-            <div class = "tool" id="tool-arrow">
+            <div class="tool" id="tool-arrow">
                 <i class="fas fa-long-arrow-alt-right tool-icon"></i>
             </div>
-            <div class = "tool" id="tool-shade">
+            <div class="tool" id="tool-shade">
                 <i class="fas fa-umbrella-beach tool-icon"></i>
             </div>
-            <div class = "tool" id="tool-blur">
+            <div class="tool" id="tool-blur">
                 <i class="fas fa-droplet tool-icon"></i>
             </div>
-        <div class = "spacer-3"></div>
-            <div class = "right-toolbar tool-option-disabled" id ="tool-options">
-                <div class = "tool">
+            <div class="spacer-3"></div>
+            <div class="right-toolbar tool-option-disabled" id="tool-options">
+                <div class="tool">
 
-                    <input type = "color" id = 'to-stroke'></input>
-                    <div style = "height:100%;padding-top:4px;padding-bottom:4px;display:flex;flex-direction:column;padding-left:8px">
-                        <i class="fas fa-plus tool-icon" id = 'to-plus' style = "height:50%"></i>
-                        <i class="fas fa-minus tool-icon" id = 'to-minus' style = "height:50%"></i>
+                    <input type="color" id='to-stroke'></input>
+                    <div
+                        style="height:100%;padding-top:4px;padding-bottom:4px;display:flex;flex-direction:column;padding-left:8px">
+                        <i class="fas fa-plus tool-icon" id='to-plus' style="height:50%"></i>
+                        <i class="fas fa-minus tool-icon" id='to-minus' style="height:50%"></i>
                     </div>
-                    <p style = "margin:auto; font-weight:bold; color: var(--background)" id = "to-line-width">3</p>
-                    <i class="fas fa-font tool-icon" id = 'to-text'></i>
-                    <i class="fas fa-a tool-icon" id = 'to-text2'></i>
-                    
-                </div> 
+                    <p style="margin:auto; font-weight:bold; color: var(--background)" id="to-line-width">3</p>
+                    <i class="fas fa-font tool-icon" id='to-text'></i>
+                    <i class="fas fa-a tool-icon" id='to-text2'></i>
+
+                </div>
+            </div>
         </div>
-    </div>
 
 </body>
 </head>

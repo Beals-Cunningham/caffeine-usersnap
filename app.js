@@ -1,14 +1,6 @@
 import express from 'express'
 const app = express()
 
-
-
-app.get('/helloworld', function (req, res) {
-    //Send /public/hello-world.html file as HTML 
-    res.type('text/html')
-    res.sendFile('/views/hello-world.html', { root: '.'})
-})
-
 app.get('/overlay/css', function (req, res) {
     //send file as MIME CSS type
     res.type('text/css')

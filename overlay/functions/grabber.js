@@ -1,10 +1,6 @@
 import '/jquery/js'
 const $ = window.jQuery
 
-function dragStart(e){
-
-}
-
 function drag(e){
     //move the toolbar to the mouse position
     let max_x = $(window).width() - ($('.overlay-toolbar-right-container').width())
@@ -18,15 +14,7 @@ function drag(e){
 
 }
 
-function dragEnd(e){
-
-}
-
-
-
 $(document).ready(function(){
-    $('#grabber').on('dragstart', dragStart)
-    $('#grabber').on('dragend', dragEnd)
     $('#grabber').on('drag', drag)
 }
 )
