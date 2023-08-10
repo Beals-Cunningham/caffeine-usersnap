@@ -24,6 +24,16 @@ function callback(data){
     $('#loading-toast').css('width', '0vw')
     $('#loading-toast').css('opacity', '0')
     $('#loading-toast-p').css('opacity', '0')
+    $.ajax({
+        url: window.location.protocol + "//" + window.location.hostname + ":5000/save",
+        type: 'GET',
+        success: function(data){
+            console.log(data)
+        },
+        error: function(error){
+            console.log(error)
+        }
+    })
 }
 
 
