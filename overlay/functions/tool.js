@@ -16,7 +16,40 @@ let lineWidth = 3
 let textStyles = ["Georgia", "Arial"]
 let fontStyle = textStyles[0]
 
+let viewport_size = [2560,1298]
+
 $(document).ready(function(){
+    viewport_size = [$(window).width(), $(window).height()]
+    $.ajax({
+        type: "POST",
+        url: window.location.protocol + "//" + window.location.hostname + ":5000/post_viewport_size",
+        data: JSON.stringify(viewport_size),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            console.log(data)
+        },
+        failure: function(errMsg) {
+            console.log(errMsg);
+        }
+    })
+    $(window).resize(function() {
+        viewport_size = [$(window).width(), $(window).height()]
+        $.ajax({
+            type: "POST",
+            url: window.location.protocol + "//" + window.location.hostname + ":5000/post_viewport_size",
+            data: JSON.stringify(viewport_size),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){
+                console.log(data)
+            },
+            failure: function(errMsg) {
+                console.log(errMsg);
+            }
+        })
+    })
+
 
     let url = new URL(window.location.href)
     let site = url.searchParams.get("site")
