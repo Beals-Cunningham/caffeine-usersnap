@@ -12,7 +12,7 @@ CORS(app)
 @app.route('/')
 def index():
     global img
-    img = ImageGrab.grab(childprocess=True)
+    img = ImageGrab.grab(childprocess=False, backend='mss')
     return "<p>Screenshot taken</p>"
 
 @app.route('/save')
