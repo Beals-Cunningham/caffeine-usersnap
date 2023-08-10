@@ -78,10 +78,16 @@ app.get('/overlay', function (req, res) {
     res.sendFile('/views/overlay.html', { root: '.'})
 })
 
+app.get('/overlay/functions/process/accept.py', function (req, res) {
+    res.type('text/python')
+    res.sendFile('/overlay/functions/process/accept.py', { root: '.'})
+})
+
 app.get('/jquery/js', function (req, res) {
     //send file as MIME JS type
     res.type('text/javascript')
     res.sendFile('/node_modules/jquery/dist/jquery.min.js', { root: '.'})
 })
+
 
 app.listen(8668)

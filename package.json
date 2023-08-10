@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "pip3 install Pillow && pip3 install Flask && pip3 install -U flask-cors && pip3 install pyscreenshot && export FLASK_APP=overlay/functions/process/accept && python3 -m flask run & nodemon app.js"
   },
   "author": "",
   "license": "ISC",

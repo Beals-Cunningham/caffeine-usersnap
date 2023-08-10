@@ -219,6 +219,24 @@ function useShade(){
 }
 
 function useSelect(){
+    //get the element under the mouse
+    console.log(clicker.originalEvent.clientX)
+    let _x = clicker.originalEvent.clientX
+    let boundingRect = document.getElementById('tool-select-done').getBoundingClientRect()
+    let _min_x = boundingRect.left
+    let _max_x = boundingRect.right
+    let _dist_min = Math.abs(_x - _min_x)
+    let _dist_max = Math.abs(_x - _max_x)
+    if (_dist_min < _dist_max){
+        Accept(c)
+    }
+    else{
+        Reject(c)
+    }
+
+}
+
+function Clear(){
     $('#website').css('pointer-events', 'auto')
     $('#ts-p').css('display', '')
     $('#tool-select-done').css('width', 'calc(100% - 8px)')
@@ -234,22 +252,8 @@ function useSelect(){
     $('[id^=blur-]').remove()
     $('[id^=text-]').remove()
     $('[id^=comment-]').remove()
-    //get the element under the mouse
-    console.log(clicker.originalEvent.clientX)
-    let _x = clicker.originalEvent.clientX
-    let boundingRect = document.getElementById('tool-select-done').getBoundingClientRect()
-    let _min_x = boundingRect.left
-    let _max_x = boundingRect.right
-    let _dist_min = Math.abs(_x - _min_x)
-    let _dist_max = Math.abs(_x - _max_x)
-    if (_dist_min < _dist_max){
-        Accept(c)
-    }
-    else{
-        Reject(c)
-    }
     c.canvas.width = 0
     c.canvas.height = 0
 }
 
-export {strokeColor, lineWidth, fontStyle}
+export {strokeColor, lineWidth, fontStyle, Clear}
