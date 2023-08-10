@@ -62,19 +62,6 @@ app.get('/overlay', function (req, res) {
     res.sendFile('/views/overlay.html', { root: '.'})
 })
 
-
-app.get('/bootstrap/css', function (req, res) {
-    //send file as MIME CSS type
-    res.type('text/css')
-    res.sendFile('/node_modules/bootstrap/dist/css/bootstrap.min.css', { root: '.'})
-})
-
-app.get('/bootstrap/js', function (req, res) {
-    //send file as MIME JS type
-    res.type('text/javascript')
-    res.sendFile('/node_modules/bootstrap/dist/js/bootstrap.min.js', { root: '.'})
-})
-
 app.get('/jquery/js', function (req, res) {
     //send file as MIME JS type
     res.type('text/javascript')
