@@ -4,6 +4,7 @@ import Brush from '/tool/brush'
 import Rectangle from '/tool/rectangle'
 import Circle from '/tool/circle'
 import Text from '/tool/text'
+import Comment from '/tool/comment'
 import Blur from '/tool/blur'
 import Accept from '/tool/accept'
 import Reject from '/tool/reject'
@@ -164,7 +165,6 @@ function useCircle(){
     $('#ts-s').css('display', '')
     $('#ts-t').css('display', '')
     Circle(c, strokeColor, lineWidth)
-
 }
 
 function useText(){
@@ -174,11 +174,15 @@ function useText(){
     $('#ts-s').css('display', '')
     $('#ts-t').css('display', '')
     Text(c, strokeColor, lineWidth)
-
 }
 
 function useComment(){
-
+    $('#ts-p').css('display', 'none')
+    $('#tool-select-done').css('width', 'calc(200% - 8px)')
+    $('#tool-select-done').css('margin-right', '48px')
+    $('#ts-s').css('display', '')
+    $('#ts-t').css('display', '')
+    Comment(c, strokeColor, lineWidth)
 }
 
 function useBlur(){
@@ -229,6 +233,7 @@ function useSelect(){
     //select all elements with id #blur-*
     $('[id^=blur-]').remove()
     $('[id^=text-]').remove()
+    $('[id^=comment-]').remove()
     //get the element under the mouse
     console.log(clicker.originalEvent.clientX)
     let _x = clicker.originalEvent.clientX

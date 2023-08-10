@@ -63,6 +63,12 @@ app.get('/tool/text', function (req, res) {
     res.sendFile('/overlay/functions/tools/text.js', { root: '.'})
 })
 
+app.get('/tool/comment', function (req, res) {
+    //send file as MIME JS type
+    res.type('text/javascript')
+    res.sendFile('/overlay/functions/tools/comment.js', { root: '.'})
+})
+
 app.get('/tool/accept', function (req, res) {
     //send file as MIME JS type
     res.type('text/javascript')
