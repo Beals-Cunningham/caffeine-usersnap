@@ -5,8 +5,11 @@ import Rectangle from '/tool/rectangle'
 import Circle from '/tool/circle'
 import Text from '/tool/text'
 import Blur from '/tool/blur'
+import Accept from '/tool/accept'
+import Reject from '/tool/reject'
 
 let c = null
+let clicker = null
 let strokeColor = '#c87832'
 let lineWidth = 3
 let textStyles = ["Georgia", "Arial"]
@@ -89,7 +92,8 @@ $(document).ready(function(){
     c = canvas.getContext("2d")
 
     tools.forEach(function(tool){
-        tool.on('click', function(){
+        tool.on('click', function(e){
+            clicker = e
             if (c.canvas.width != $('#website').width() || c.canvas.height != $('#website').height()){
             c.canvas.width = $('#website').width()
             c.canvas.height = $('#website').height()}
@@ -137,26 +141,38 @@ function setActiveTool(p, strokeColor){
 
 function useBrush(){
     $('#ts-p').css('display', 'none')
+    $('#tool-select-done').css('width', 'calc(200% - 8px)')
+    $('#tool-select-done').css('margin-right', '48px')
+    $('#ts-t').css('display', '')
     $('#ts-s').css('display', '')
     Brush(c, strokeColor, lineWidth)
 }
 
 function useRectangle(){
     $('#ts-p').css('display', 'none')
+    $('#tool-select-done').css('width', 'calc(200% - 8px)')
+    $('#tool-select-done').css('margin-right', '48px')
     $('#ts-s').css('display', '')
+    $('#ts-t').css('display', '')
     Rectangle(c, strokeColor, lineWidth)
 }
 
 function useCircle(){
     $('#ts-p').css('display', 'none')
+    $('#tool-select-done').css('width', 'calc(200% - 8px)')
+    $('#tool-select-done').css('margin-right', '48px')
     $('#ts-s').css('display', '')
+    $('#ts-t').css('display', '')
     Circle(c, strokeColor, lineWidth)
 
 }
 
 function useText(){
     $('#ts-p').css('display', 'none')
+    $('#tool-select-done').css('width', 'calc(200% - 8px)')
+    $('#tool-select-done').css('margin-right', '48px')
     $('#ts-s').css('display', '')
+    $('#ts-t').css('display', '')
     Text(c, strokeColor, lineWidth)
 
 }
@@ -169,7 +185,10 @@ function useBlur(){
     $('#tool-options').removeClass()
     $('#tool-options').addClass('tool-option-disabled')
     $('#ts-p').css('display', 'none')
+    $('#tool-select-done').css('width', 'calc(200% - 8px)')
+    $('#tool-select-done').css('margin-right', '48px')
     $('#ts-s').css('display', '')
+    $('#ts-t').css('display', '')
     $('#overlay-canvas').off('mousedown')
     $('#overlay-canvas').off('mousemove')
     $('#overlay-canvas').off('mouseup')
@@ -184,7 +203,10 @@ function useShade(){
     $('#tool-options').removeClass()
     $('#tool-options').addClass('tool-option-disabled')
     $('#ts-p').css('display', 'none')
+    $('#tool-select-done').css('width', 'calc(200% - 8px)')
+    $('#tool-select-done').css('margin-right', '48px')
     $('#ts-s').css('display', '')
+    $('#ts-t').css('display', '')
     $('#overlay-canvas').off('mousedown')
     $('#overlay-canvas').off('mousemove')
     $('#overlay-canvas').off('mouseup')
@@ -195,7 +217,10 @@ function useShade(){
 function useSelect(){
     $('#website').css('pointer-events', 'auto')
     $('#ts-p').css('display', '')
+    $('#tool-select-done').css('width', 'calc(100% - 8px)')
+    $('#tool-select-done').css('margin-right', '0px')
     $('#ts-s').css('display', 'none')
+    $('#ts-t').css('display', 'none')
     $('#tool-options').removeClass()
     $('#tool-options').addClass('tool-option-disabled')
     $('#overlay-canvas').off('mousedown')
@@ -203,6 +228,20 @@ function useSelect(){
     $('#overlay-canvas').off('mouseup')
     //select all elements with id #blur-*
     $('[id^=blur-]').remove()
+    //get the element under the mouse
+    console.log(clicker.originalEvent.clientX)
+    let _x = clicker.originalEvent.clientX
+    let boundingRect = document.getElementById('tool-select-done').getBoundingClientRect()
+    let _min_x = boundingRect.left
+    let _max_x = boundingRect.right
+    let _dist_min = Math.abs(_x - _min_x)
+    let _dist_max = Math.abs(_x - _max_x)
+    if (_dist_min < _dist_max){
+        Accept(c)
+    }
+    else{
+        Reject(c)
+    }
     c.canvas.width = 0
     c.canvas.height = 0
 }

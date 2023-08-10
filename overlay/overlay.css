@@ -93,6 +93,15 @@ body{
     transition: all 0.1s;
 }
 
+#tool-select-done{
+    transition: all 0.2s;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
 .grabber .tool-icon{
     color: var(--background-active);
 }
@@ -189,12 +198,12 @@ body{
     opacity: 1;
 }
 
-#to-plus, #to-minus, #to-text{
+#to-plus, #to-minus, #to-text, #ts-t, #ts-s{
     color: var(--background);
     transition: .1s all;
 }
 
-#to-plus:hover, #to-minus:hover, #to-text:hover{
+#to-plus:hover, #to-minus:hover, #to-text:hover, #ts-t:hover, #ts-s:hover{
     color: var(--active);
 }
 
