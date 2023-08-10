@@ -6,6 +6,6 @@ app = Flask(__name__)
 CORS(app)
 @app.route('/')
 def index():
-    im = ImageGrab.grab()
+    im = ImageGrab.grab(childprocess=True)
     im.save("SS1.png")
     return "<p>Screenshot taken</p>"
