@@ -45,7 +45,6 @@ function mouseDown(e){
     $(_c).css('top', y)
     $(_c).css('width','auto')
     $(_c).css('height', 'auto')
-    $(_c).css('border', '1px dashed red')
     $(_c).css('padding', '4px')
     $(_c).css('z-index', '80')
     $(_c).css('font', font)

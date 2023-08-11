@@ -142,6 +142,7 @@ $(document).ready(function(){
 
         tool.on('click', function(e){
             clicker = e
+            $('#help').css('opacity', '0')
             if (c.canvas.width != $('#website').width() || c.canvas.height != $('#website').height()){
             c.canvas.width = $('#website').width()
             c.canvas.height = $('#website').height()}
