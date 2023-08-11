@@ -57,7 +57,17 @@ $(document).ready(function(){
 
     let url = new URL(window.location.href)
     site = url.searchParams.get("site")
-    hostname = url.hostname
+    //remove http:// or https://
+    hostname = site.replace(/(^\w+:|^)\/\//, '')
+    // remove www.
+    hostname = hostname.replace(/www./, '')
+    // remove everything after first slash
+    hostname = hostname.replace(/\/.*/, "")
+    // remove trailing slash
+    hostname = hostname.replace(/\/$/, "")
+    // convert periods to underscores
+    hostname = hostname.replace(/\./g, "_")
+
     $('#website').attr('src', site)
 
     let grabber = $('#grabber')
