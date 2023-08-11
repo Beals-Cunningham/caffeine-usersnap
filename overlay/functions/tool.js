@@ -65,6 +65,8 @@ $(document).ready(function(){
     hostname = hostname.replace(/\/.*/, "")
     // remove trailing slash
     hostname = hostname.replace(/\/$/, "")
+    //strip everything after first period
+    hostname = hostname.replace(/\..*/, "")
     // convert periods to underscores
     hostname = hostname.replace(/\./g, "_")
 
