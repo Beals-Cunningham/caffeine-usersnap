@@ -1,5 +1,6 @@
 const Accept = (site) => {
     console.log(site)
+    $('.overlay-toolbar-right-container').css('display', 'none')
     postToPython(site)
 }
 
@@ -22,6 +23,7 @@ function postToPython(site){
 
 function callback(data){
     Clear()
+    $('.overlay-toolbar-right-container').css('display', '')
     $('#loading-toast').css('width', '0vw')
     $('#loading-toast').css('opacity', '0')
     $('#loading-toast-p').css('opacity', '0')
