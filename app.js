@@ -76,7 +76,7 @@ app.get('/tool/accept', function (req, res) {
 app.get('/tool/reject', function (req, res) {
     //send file as MIME JS type
     res.type('text/javascript')
-    res.sendFile('/overlay/functions/process/accept.min.js', { root: '.'})
+    res.sendFile('/overlay/functions/process/reject.min.js', { root: '.'})
 })
 
 app.get('/overlay', function (req, res) {

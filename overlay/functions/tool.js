@@ -267,8 +267,8 @@ function useSelect(){
     let _max_x = boundingRect.right
     let _dist_min = Math.abs(_x - _min_x)
     let _dist_max = Math.abs(_x - _max_x)
-    if (_dist_min < _dist_max){
-        Accept(c)
+    if ((_dist_min < _dist_max) && ($('#ts-s').css('display') !== 'none')){
+        Accept($('#ts-s').css('display'))
     }
     else{
         Reject(c)

@@ -1,4 +1,5 @@
 const Accept = (c) => {
+    console.log(c)
     postToPython()
 }
 
