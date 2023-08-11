@@ -1,12 +1,12 @@
-const Accept = (c) => {
-    console.log(c)
-    postToPython()
+const Accept = (site) => {
+    console.log(site)
+    postToPython(site)
 }
 
 import {Clear} from '/overlay/functions/tool'
 
-function postToPython(){
-    let url = window.location.protocol + "//" + window.location.hostname + ":5000"
+function postToPython(site){
+    let url = window.location.protocol + "//" + window.location.hostname + ":5000" + "?site=" + site
     $('#loading-toast').css('width', 'auto')
     $('#loading-toast').css('opacity', '1')
     $('#loading-toast-p').css('opacity', '1')

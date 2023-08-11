@@ -16,6 +16,8 @@ let strokeColor = '#c87832'
 let lineWidth = 5
 let textStyles = ["Georgia", "Arial"]
 let fontStyle = textStyles[0]
+let site = null
+let hostname = null
 
 let viewport_size = [2560,1298]
 
@@ -53,7 +55,8 @@ $(document).ready(function(){
 
 
     let url = new URL(window.location.href)
-    let site = url.searchParams.get("site")
+    site = url.searchParams.get("site")
+    hostname = url.hostname
     $('#website').attr('src', site)
 
     let grabber = $('#grabber')
@@ -268,7 +271,7 @@ function useSelect(){
     let _dist_min = Math.abs(_x - _min_x)
     let _dist_max = Math.abs(_x - _max_x)
     if ((_dist_min < _dist_max) && ($('#ts-s').css('display') !== 'none')){
-        Accept($('#ts-s').css('display'))
+        Accept(hostname)
     }
     else{
         Reject(c)

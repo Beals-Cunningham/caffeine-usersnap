@@ -9,10 +9,13 @@ count = 0
 viewport_size = [2560,1298]
 app = Flask(__name__)
 CORS(app)
+site = None
 
 @app.route('/')
 def index():
     global img
+    global site
+    site = request.args.get('site')
     with mss.mss() as sct:
         monitor = sct.monitors[1]
         sct_img = sct.grab(monitor)
@@ -22,11 +25,12 @@ def index():
 
 @app.route('/save')
 def save():
+    global site
     global count
     count += 1
     global img
     crop()
-    img.save(''.join(['screenshot-',str(count),'.png']))
+    img.save(''.join([site, '-screenshot-',str(count),'.png']))
     return "<p>Screenshot saved</p>"
 
 @app.route('/reset_number')
