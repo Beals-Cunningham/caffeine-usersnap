@@ -53,10 +53,18 @@ function mouseMove(e){
     //First, create an SVG line from the start point to the current mouse position
     let endX = e.pageX
     let endY = e.pageY
+    //find the endpoint of a line going from (startX, startY) to most of the way to (endX, endY), short by lineWidth
+    let xDiff = endX - startX
+    let yDiff = endY - startY
+    let xDiffLineWidth = xDiff * (1 - (lineWidth / Math.sqrt(xDiff * xDiff + yDiff * yDiff)))
+    let yDiffLineWidth = yDiff * (1 - (lineWidth / Math.sqrt(xDiff * xDiff + yDiff * yDiff)))
+    let tendX = startX + xDiffLineWidth
+    let tendY = startY + yDiffLineWidth
+
     c.strokeStyle = strokeColor
     c.lineWidth = lineWidth * 2
     let svg = '<svg height="100%" width="100%">'
-    svg += '<line x1="' + startX + '" y1="' + startY + '" x2="' + endX + '" y2="' + endY + '" style="stroke:' + strokeColor + ';stroke-width:' + lineWidth + '" />'
+    svg += '<line x1="' + startX + '" y1="' + startY + '" x2="' + tendX + '" y2="' + tendY + '" style="stroke:' + strokeColor + ';stroke-width:' + lineWidth + '" />'
     //Then, add an arrow to the end of the line using a triangle in SVG
     //First, find the angle of the line
     let angle = Math.atan2(endY - startY, endX - startX) * 180 / Math.PI
