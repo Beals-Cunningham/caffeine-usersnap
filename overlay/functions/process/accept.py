@@ -1,4 +1,5 @@
-import pyscreenshot as ImageGrab
+from PIL import Image
+import mss
 from flask import Flask
 from flask_cors import CORS
 from flask import request
@@ -12,7 +13,11 @@ CORS(app)
 @app.route('/')
 def index():
     global img
-    img = ImageGrab.grab(childprocess=False, backend='mss')
+    with mss.mss() as sct:
+        monitor = sct.monitors[1]
+        sct_img = sct.grab(monitor)
+        img = Image.frombytes("RGB", sct_img.size, sct_img.bgra, "raw", "BGRX")
+
     return "<p>Screenshot taken</p>"
 
 @app.route('/save')
