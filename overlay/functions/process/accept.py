@@ -28,7 +28,10 @@ def cd(newdir):
 def index():
     global img
     global site
+    tmp_site = site
     site = request.args.get('site')
+    if (tmp_site != site):
+        reset_number()
     with mss.mss() as sct:
         monitor = sct.monitors[1]
         sct_img = sct.grab(monitor)
@@ -61,7 +64,10 @@ def post_viewport_size():
 @app.route('/export_to_pdf', methods=['POST'])
 def export_to_pdf():
     global site
+    tmp_site = site
     site = request.get_json()
+    if (tmp_site != site):
+        reset_number()
     with cd(site):
     # get all images that start with site and open them as PIL images
         images = [Image.open(x) for x in os.listdir() if (x.startswith(site) and not x.endswith('.pdf'))]
