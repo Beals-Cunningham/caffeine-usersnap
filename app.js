@@ -55,6 +55,12 @@ app.get('/tool/text', function (req, res) {
     res.sendFile('/overlay/functions/tools/text.min.js', { root: '.'})
 })
 
+app.get('/tool/arrow', function (req, res) {
+    //send file as MIME JS type
+    res.type('text/javascript')
+    res.sendFile('/overlay/functions/tools/arrow.min.js', { root: '.'})
+})
+
 app.get('/tool/comment', function (req, res) {
     //send file as MIME JS type
     res.type('text/javascript')

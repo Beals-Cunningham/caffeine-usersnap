@@ -8,11 +8,12 @@ import Comment from '/tool/comment'
 import Blur from '/tool/blur'
 import Accept from '/tool/accept'
 import Reject from '/tool/reject'
+import Arrow from '/tool/arrow'
 
 let c = null
 let clicker = null
 let strokeColor = '#c87832'
-let lineWidth = 3
+let lineWidth = 5
 let textStyles = ["Georgia", "Arial"]
 let fontStyle = textStyles[0]
 
@@ -233,6 +234,12 @@ function useBlur(){
 }
 
 function useArrow(){
+    $('#ts-p').css('display', 'none')
+    $('#tool-select-done').css('width', 'calc(200% - 8px)')
+    $('#tool-select-done').css('margin-right', '48px')
+    $('#ts-s').css('display', '')
+    $('#ts-t').css('display', '')
+    Arrow(c, strokeColor, lineWidth)
 
 }
 
@@ -285,6 +292,7 @@ function Clear(){
     $('[id^=blur-]').remove()
     $('[id^=text-]').remove()
     $('[id^=comment-]').remove()
+    $('[id^=arrow-]').remove()
     c.canvas.width = 0
     c.canvas.height = 0
 }

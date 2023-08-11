@@ -49,7 +49,7 @@ function mouseDown(e){
     $(_c).css('width', rect.w)
     $(_c).css('height', rect.h)
     $(_c).css('pointer-events', 'none')
-    $(_c).css('background-color', 'rgba(125,125,125,0.5)')
+    $(_c).css('background-color', 'rgba(125,125,125,0.2)')
     $(_c).css('backdrop-filter', 'blur(10px)')
     $(_c).css('z-index', '80')
 
