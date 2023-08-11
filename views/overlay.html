@@ -62,10 +62,10 @@
                     <div
                         style="height:100%;padding-top:4px;padding-bottom:4px;display:flex;flex-direction:column;padding-left:8px">
                         <div id='to-plus' style="height:50%">
-                            <i class="fas fa-plus tool-icon"></i>
+                            <i class="fas fa-plus tool-icon" style="width:100%;height:100%"></i>
                         </div>
                         <div id='to-minus' style="height:50%">
-                            <i class="fas fa-minus tool-icon"></i>
+                            <i class="fas fa-minus tool-icon" style="width:100%;height:100%"></i>
                         </div>
                     </div>
                     <p style="margin:auto; font-weight:bold; color: var(--background)" id="to-line-width">3</p>
@@ -78,6 +78,34 @@
     <div class="loading-toast" id="loading-toast">
         <p id="loading-toast-p">SAVING...</p>
     </div>
+    <div id="help" class="help">
+        <div class="help-container">
+            <div class="help-body">
+                <div class="help-section">
+                    <h3>Tools</h3>
+                    <p><i class="fas fa-paint-brush"></i> <strong>(D)</strong>: draw on the page</p>
+                    <p><i class="far fa-square"></i> <strong>(R)</strong>: draw a rectangle</p>
+                    <p><i class="far fa-circle"></i> <strong>(C)</strong>: draw a circle</p>
+                    <p><i class="fas fa-font"></i> <strong>(T)</strong>: add text</p>
+                    <p><i class="fas fa-comment-dots"></i> <strong>(X)</strong>: add a comment</p>
+                    <p><i class="fas fa-long-arrow-alt-right"></i> <strong>(A)</strong>: add an arrow</p>
+                    <p><i class="fas fa-umbrella-beach"></i> <strong>(S)</strong>: add shade</p>
+                    <p><i class="fas fa-droplet"></i> <strong>(B)</strong>: blur a section</p>
+                    <p><i class="fas fa-download"></i> <strong>(E)</strong>: export the screenshots as a PDF</p>
+                </div>
+                <div class="help-section">
+                    <h3>Saving or deleting a screenshot</h3>
+                    <p>Click the <i class="far fa-circle-check"></i> icon to save the current screen</p>
+                    <p>Click the <i class="fas fa-trash"></i> icon to cancel and clear your additions</p>
+                </div>
+
+                <div class="help-section">
+                    <h3>Other Tools</h3>
+                    <p>Use -/+ to change font size and line width</p>
+                    <p>Press <strong>(H)</strong> to toggle the help overlay</p>
+                    <p>Drag and drop the <i class="fas fa-ellipsis"></i> to move the toolbar</p>
+                </div>
+            </div>
 
 </body>
 </head>
