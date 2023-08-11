@@ -1,10 +1,11 @@
 from PIL import Image
 import mss
 import os
-from flask import Flask
+from flask import Flask, send_file
 from flask_cors import CORS
 from flask import request
 from contextlib import contextmanager
+import datetime
 
 img = None
 count = 0
@@ -12,17 +13,6 @@ viewport_size = [2560,1298]
 app = Flask(__name__)
 CORS(app)
 site = None
-
-@contextmanager
-def cd(newdir):
-    prevdir = os.getcwd()
-    if (not os.path.exists(os.path.expanduser(newdir))):
-        os.mkdir(newdir)
-    os.chdir(os.path.expanduser(newdir))
-    try:
-        yield
-    finally:
-        os.chdir(prevdir)
 
 @app.route('/')
 def index():
@@ -46,8 +36,10 @@ def save():
     count += 1
     global img
     crop()
-    with cd(site):
-        img.save(''.join([site, '-screenshot-',str(count),'.png']))
+    path = os.path.join(os.getcwd(), site)
+    if not os.path.exists(path):
+        os.makedirs(path)
+    img.save(''.join([os.path.join(path, site), '-screenshot-',str(count),'.png']))
     return "<p>Screenshot saved</p>"
 
 @app.route('/reset_number')
@@ -68,11 +60,40 @@ def export_to_pdf():
     site = request.get_json()
     if (tmp_site != site):
         reset_number()
-    with cd(site):
+    
+    today_date = datetime.date.today()
+    today_date = today_date.strftime("%m-%d-%Y")
+    
+    path = os.path.join(os.getcwd(), site)
     # get all images that start with site and open them as PIL images
-        images = [Image.open(x) for x in os.listdir() if (x.startswith(site) and not x.endswith('.pdf'))]
-        images[0].save(''.join([site, '.pdf']), save_all=True, append_images=images[1:])
-    return "<p>PDF exported to "+''.join([site, '.pdf'])+"</p>"
+    images = []
+    for x in os.listdir(path):
+        print(x)
+        if (x.startswith(site) and not x.endswith('.pdf')):
+            images.append(
+                          Image.open(os.path.join(path, x))
+            )
+    images[0].save(''.join([os.path.join(path, site), '-', today_date,'.pdf']), save_all=True, append_images=images[1:])
+    return "<p>PDF exported to "+''.join([site, '-', today_date,'.pdf'])+"</p>"
+
+@app.route('/get_exported_pdf', methods=['POST', 'GET'])
+def get_exported_pdf():
+    global site
+    site = request.get_json()
+
+    #combine os.getcwd() with the site name
+    path = os.path.join(os.getcwd(), site)
+
+    files = []
+    for x in os.listdir(path):
+        print(x)
+        if (x.startswith(site) and x.endswith('.pdf')):
+            files.append(x)
+        
+    file = max(files, key=lambda x: os.path.getctime(os.path.join(path, x)))
+    return send_file(os.path.join(path, file), mimetype='application/pdf')
+
+        
 
 def crop():
     global img

@@ -20,21 +20,34 @@ function callback(){
     $('#loading-toast').css('width', '0vw')
     $('#loading-toast').css('opacity', '0')
     $('#loading-toast-p').css('opacity', '0')
-    //delay one second
-    setTimeout(function(){
-        $('#loading-toast').css('width', 'auto')
-        $('#loading-toast').css('opacity', '1')
-        $('#loading-toast-p').css('opacity', '1')
-        $('#loading-toast-p').text('Your PDF is ready!')
-        $('#tool-export').removeClass('active')
-        setTimeout(function(){
-            $('#loading-toast').css('width', '0vw')
-            $('#loading-toast').css('opacity', '0')
-            $('#loading-toast-p').css('opacity', '0')
-            $('#loading-toast-p').text('Loading...')
-        }, 1000)
-    }, 1000)
-    
+
+    var xhr = new XMLHttpRequest()
+    xhr.open('POST', window.location.protocol + "//" + window.location.hostname + ":5000/get_exported_pdf")
+    xhr.responseType = 'blob'
+    xhr.setRequestHeader('Content-type', 'application/json')
+    xhr.send(JSON.stringify(window.location.hostname))
+    xhr.onload = function(e) {
+        if (this.status == 200) {
+          // Note: .response instead of .responseText
+          var blob = new Blob([this.response], {type: 'application/pdf'})
+        var url = URL.createObjectURL(blob)
+        window.location = url
+        }
+    }
+    /* $.ajax({
+        url: window.location.protocol + "//" + window.location.hostname + ":5000/get_exported_pdf",
+        type: 'POST',
+        data: JSON.stringify(window.location.hostname),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            console.log(data)
+            window.location = data
+        },
+        error: function(error){
+            console.log(error)
+        }
+    })    */ 
 }
 
 export default Export
