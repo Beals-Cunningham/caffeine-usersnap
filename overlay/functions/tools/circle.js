@@ -13,7 +13,7 @@ const Circle = (p, strokeColor, lineWidth) => {
     $('#overlay-canvas').on('mouseup', mouseUp)
     $('#tool-options').removeClass()
     $('#tool-options').addClass('tool-option-enabled')
-    $('#tool-options').addClass('to-rectangle')
+    $('#tool-options').addClass('to-text')
     $('#to-stroke').val(strokeColor)
     $('#to-line-width').text(lineWidth)
 }

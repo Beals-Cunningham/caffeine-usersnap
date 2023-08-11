@@ -16,8 +16,8 @@ let c = null
 let clicker = null
 let strokeColor = '#c87832'
 let lineWidth = 5
-let textStyles = ["Georgia", "Arial"]
-let fontStyle = textStyles[0]
+let textStyles = ["Georgia", "Arial", "Helvetica", "Times New Roman", "Times", "Courier New", "Courier", "Verdana", "Palatino", "Garamond", "Bookman", "Comic Sans MS", "Trebuchet MS", "Arial Black", "Impact"]
+let fontStyle = textStyles[2]
 let site = null
 let hostname = null
 
@@ -101,44 +101,26 @@ $(document).ready(function(){
     let lineSizeMinus = $('#to-minus')
 
     lineSizePlus.on('click', function(){
-        lineWidth += 2
+        console.log(lineWidth)
+        lineWidth += 1
+        if (lineWidth > 50){
+            lineWidth = 50
+        }
         $('#to-line-width').text(lineWidth)
         console.log(lineWidth)
     })
 
     lineSizeMinus.on('click', function(){
-        lineWidth -= 2
+        console.log(lineWidth)
+        lineWidth -= 1
+        if (lineWidth < 1){
+            lineWidth = 1
+        }
         $('#to-line-width').text(lineWidth)
         if (lineWidth < 1){
             lineWidth = 1
         }
         console.log(lineWidth)
-    })
-
-    let textStyleEl = $('#to-text')
-    textStyleEl.on('click', function(e){
-        if (fontStyle == "Georgia"){
-            fontStyle = "Arial"
-            $('#to-text').css('display', 'none')
-            $('#to-text2').css('display', 'block')
-        } else {
-            fontStyle = "Georgia"
-            $('#to-text').css('display', 'block')
-            $('#to-text2').css('display', 'none')
-        }
-    })
-
-    let textStyleEl2 = $('#to-text2')
-    textStyleEl2.on('click', function(e){
-        if (fontStyle == "Georgia"){
-            fontStyle = "Arial"
-            $('#to-text').css('display', 'none')
-            $('#to-text2').css('display', 'block')
-        } else {
-            fontStyle = "Georgia"
-            $('#to-text').css('display', 'block')
-            $('#to-text2').css('display', 'none')
-        }
     })
 
     const canvas = document.getElementById("overlay-canvas")

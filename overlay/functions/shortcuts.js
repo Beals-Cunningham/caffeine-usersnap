@@ -8,6 +8,8 @@ const Shortcuts =
 "a": function(){$('#tool-arrow').trigger('click')},
 "s": function(){$('#tool-shade').trigger('click')},
 "e": function(){$('#tool-export').trigger('click')},
+"=": function(){$('#to-plus').trigger('click')},
+"-": function(){$('#to-minus').trigger('click')},
 }
 
 export default Shortcuts
