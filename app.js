@@ -79,7 +79,18 @@ app.get('/tool/reject', function (req, res) {
     res.sendFile('/overlay/functions/process/reject.min.js', { root: '.'})
 })
 
+app.get('/tool/export', function (req, res) {
+    //send file as MIME JS type
+    res.type('text/javascript')
+    res.sendFile('/overlay/functions/tools/export.min.js', { root: '.'})
+})
+
 app.get('/overlay', function (req, res) {
+    res.type('text/html')
+    res.sendFile('/views/overlay.html', { root: '.'})
+})
+
+app.get('/', function (req, res) {
     res.type('text/html')
     res.sendFile('/views/overlay.html', { root: '.'})
 })

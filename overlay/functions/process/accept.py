@@ -1,5 +1,6 @@
 from PIL import Image
 import mss
+import os
 from flask import Flask
 from flask_cors import CORS
 from flask import request
@@ -43,6 +44,15 @@ def post_viewport_size():
     global viewport_size
     viewport_size = request.get_json()
     return "<p>Viewport size saved</p>"
+
+@app.route('/export_to_pdf', methods=['POST'])
+def export_to_pdf():
+    global site
+    site = request.get_json()
+    # get all images that start with site and open them as PIL images
+    images = [Image.open(x) for x in os.listdir() if (x.startswith(site) and not x.endswith('.pdf'))]
+    images[0].save(''.join([site, '.pdf']), save_all=True, append_images=images[1:])
+    return "<p>PDF exported to "+''.join([site, '.pdf'])+"</p>"
 
 def crop():
     global img

@@ -9,6 +9,7 @@ import Blur from '/tool/blur'
 import Accept from '/tool/accept'
 import Reject from '/tool/reject'
 import Arrow from '/tool/arrow'
+import Export from '/tool/export'
 
 let c = null
 let clicker = null
@@ -74,7 +75,8 @@ $(document).ready(function(){
     let blur = $('#tool-blur')
     let arrow = $('#tool-arrow')
     let shade = $('#tool-shade')
-    let tools = [select, brush, square, circle, text, comment, blur, arrow, shade]
+    let exprt = $('#tool-export')
+    let tools = [select, brush, square, circle, text, comment, blur, arrow, shade, exprt]
 
     let strokeColorEl = $('#to-stroke')
 
@@ -147,6 +149,7 @@ $(document).ready(function(){
 })
 
 function setActiveTool(p){
+    console.log(p)
     let t = p.attr('id')
     if (t == 'tool-brush'){
         useBrush()
@@ -174,6 +177,9 @@ function setActiveTool(p){
     }
     else if (t == 'tool-select-done'){
         useSelect()
+    }
+    else if (t == 'tool-export'){
+        useExport()
     }
 }
 
@@ -277,6 +283,12 @@ function useSelect(){
         Reject(c)
     }
 
+}
+
+function useExport(){
+    $('#tool-options').removeClass()
+    $('#tool-options').addClass('tool-option-disabled')
+    Export(hostname)
 }
 
 function Clear(){
