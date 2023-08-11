@@ -4,6 +4,7 @@ import os
 from flask import Flask
 from flask_cors import CORS
 from flask import request
+from contextlib import contextmanager
 
 img = None
 count = 0
@@ -11,6 +12,17 @@ viewport_size = [2560,1298]
 app = Flask(__name__)
 CORS(app)
 site = None
+
+@contextmanager
+def cd(newdir):
+    prevdir = os.getcwd()
+    if (not os.path.exists(os.path.expanduser(newdir))):
+        os.mkdir(newdir)
+    os.chdir(os.path.expanduser(newdir))
+    try:
+        yield
+    finally:
+        os.chdir(prevdir)
 
 @app.route('/')
 def index():
@@ -31,7 +43,8 @@ def save():
     count += 1
     global img
     crop()
-    img.save(''.join([site, '-screenshot-',str(count),'.png']))
+    with cd(site):
+        img.save(''.join([site, '-screenshot-',str(count),'.png']))
     return "<p>Screenshot saved</p>"
 
 @app.route('/reset_number')
@@ -49,9 +62,10 @@ def post_viewport_size():
 def export_to_pdf():
     global site
     site = request.get_json()
+    with cd(site):
     # get all images that start with site and open them as PIL images
-    images = [Image.open(x) for x in os.listdir() if (x.startswith(site) and not x.endswith('.pdf'))]
-    images[0].save(''.join([site, '.pdf']), save_all=True, append_images=images[1:])
+        images = [Image.open(x) for x in os.listdir() if (x.startswith(site) and not x.endswith('.pdf'))]
+        images[0].save(''.join([site, '.pdf']), save_all=True, append_images=images[1:])
     return "<p>PDF exported to "+''.join([site, '.pdf'])+"</p>"
 
 def crop():
