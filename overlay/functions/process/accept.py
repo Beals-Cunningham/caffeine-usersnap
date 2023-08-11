@@ -38,6 +38,7 @@ def save():
     path = os.path.join(os.getcwd(), site)
     if not os.path.exists(path):
         os.makedirs(path)
+    resize()
     img.save(''.join([os.path.join(path, site), '-screenshot-',str(count),'.png']))
     return "<p>Screenshot saved</p>"
 
@@ -93,3 +94,9 @@ def crop():
     global img
     global viewport_size
     return img
+
+def resize():
+    global img
+    img_size = img.size
+    new_size = [int(img_size[0]*.6), int(img_size[1]*.6)]
+    img.thumbnail(new_size, resample=Image.Resampling.LANCZOS, reducing_gap=3.0)
