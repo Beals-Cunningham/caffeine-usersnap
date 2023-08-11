@@ -10,6 +10,7 @@ import Accept from '/tool/accept'
 import Reject from '/tool/reject'
 import Arrow from '/tool/arrow'
 import Export from '/tool/export'
+import Shortcuts from '/tool/shortcuts'
 
 let c = null
 let clicker = null
@@ -143,7 +144,20 @@ $(document).ready(function(){
     const canvas = document.getElementById("overlay-canvas")
     c = canvas.getContext("2d")
 
+    //loop over key/value pairs in Shortcuts and assign the key to fire the value function onkeydown
+    Object.entries(Shortcuts).forEach(([key, value]) => {
+        document.addEventListener('keydown', function(e){
+            if (e.key === key){
+                //check if user is not currently typing in a text box or content editable div
+                if (document.activeElement.tagName != "INPUT" && document.activeElement.tagName != "TEXTAREA" && document.activeElement.tagName != "DIV"){
+                    value()
+                }
+            }
+        })
+    })
+
     tools.forEach(function(tool){
+
         tool.on('click', function(e){
             clicker = e
             if (c.canvas.width != $('#website').width() || c.canvas.height != $('#website').height()){
@@ -290,7 +304,7 @@ function useSelect(){
         Accept(hostname)
     }
     else{
-        Reject(c)
+        Clear()
     }
 
 }

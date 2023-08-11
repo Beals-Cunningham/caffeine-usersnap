@@ -85,6 +85,12 @@ app.get('/tool/export', function (req, res) {
     res.sendFile('/overlay/functions/tools/export.min.js', { root: '.'})
 })
 
+app.get('/tool/shortcuts', function (req, res) {
+    //send file as MIME JS type
+    res.type('text/javascript')
+    res.sendFile('/overlay/functions/shortcuts.min.js', { root: '.'})
+})
+
 app.get('/overlay', function (req, res) {
     res.type('text/html')
     res.sendFile('/views/overlay.html', { root: '.'})
