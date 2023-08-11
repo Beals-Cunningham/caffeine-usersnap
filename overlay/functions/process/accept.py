@@ -4,7 +4,6 @@ import os
 from flask import Flask, send_file
 from flask_cors import CORS
 from flask import request
-from contextlib import contextmanager
 import datetime
 
 img = None
@@ -65,7 +64,6 @@ def export_to_pdf():
     today_date = today_date.strftime("%m-%d-%Y")
     
     path = os.path.join(os.getcwd(), site)
-    # get all images that start with site and open them as PIL images
     images = []
     for x in os.listdir(path):
         print(x)
@@ -81,19 +79,15 @@ def get_exported_pdf():
     global site
     site = request.get_json()
 
-    #combine os.getcwd() with the site name
     path = os.path.join(os.getcwd(), site)
 
     files = []
     for x in os.listdir(path):
-        print(x)
         if (x.startswith(site) and x.endswith('.pdf')):
             files.append(x)
         
     file = max(files, key=lambda x: os.path.getctime(os.path.join(path, x)))
     return send_file(os.path.join(path, file), mimetype='application/pdf')
-
-        
 
 def crop():
     global img

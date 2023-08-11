@@ -149,7 +149,6 @@ $(document).ready(function(){
 })
 
 function setActiveTool(p){
-    console.log(p)
     let t = p.attr('id')
     if (t == 'tool-brush'){
         useBrush()
@@ -269,7 +268,6 @@ function useShade(){
 
 function useSelect(){
     //get the element under the mouse
-    console.log(clicker.originalEvent.clientX)
     let _x = clicker.originalEvent.clientX
     let boundingRect = document.getElementById('tool-select-done').getBoundingClientRect()
     let _min_x = boundingRect.left
