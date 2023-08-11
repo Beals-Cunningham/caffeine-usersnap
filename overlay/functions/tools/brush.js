@@ -38,8 +38,11 @@ function mouseMove(e){
     if (drawing){
         c.strokeStyle = strokeColor
         c.strokeCap = 'round'
+        c.strokeJoin = 'round'
+        c.lineJoin = 'round'
         c.beginPath()
         c.lineWidth = lineWidth
+        c.s
         
         c.moveTo(x, y)
         setPosition(e)
