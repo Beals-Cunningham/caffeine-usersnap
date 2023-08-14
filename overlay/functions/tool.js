@@ -135,7 +135,12 @@ $(document).ready(function(){
     let strokeColorEl = $('#to-stroke')
 
     strokeColorEl.on('change', function(e){
-        strokeColor = e.target.value
+        // convert e.target.value (string) to rgb (array)
+        let rgb_array = e.target.value.match(/\d+/g).map(Number)
+        if (rgb_array[0] > 200 && rgb_array[1] < 60 && rgb_array[2] > 200){
+            strokeColor = '#ff7db4'
+        } else {
+            strokeColor = e.target.value}
     })
 
     let lineSizePlus = $('#to-plus')
