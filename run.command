@@ -1,1 +1,1 @@
-open -a "Google Chrome" "http://localhost:8668?site=replace-this-with-a-URL" && printf "\e[33;1m%s\n" 'Access at localhost:8668?site=https://example.com' && cd /Users/snehatiwary/Documents/GitHub/caffeine-usersnap && npm i && npm start
+open -a "Google Chrome" "http://localhost:8668?site=replace-this-with-a-URL" && printf "\e[33;1m%s\n" 'Access at localhost:8668?site=https://example.com' && cd $( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) && npm i && npm start
