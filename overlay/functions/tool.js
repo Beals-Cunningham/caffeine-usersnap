@@ -25,6 +25,47 @@ let viewport_size = [2560,1298]
 
 $(document).ready(function(){
     viewport_size = [$(window).width(), $(window).height()]
+
+    let body = $('body')
+    body.append('<div id="marker-top-left"></div>')
+    let markerTopLeft = $('#marker-top-left')
+    markerTopLeft.css('position', 'absolute')
+    markerTopLeft.css('left', '4px')
+    markerTopLeft.css('top', '4px')
+    markerTopLeft.css('width', '1px')
+    markerTopLeft.css('height', '1px')
+    markerTopLeft.css('background-color', 'rgb(255,0,255)')
+    markerTopLeft.css('z-index', '999')
+
+    body.append('<div id="marker-top-right"></div>')
+    let markerTopRight = $('#marker-top-right')
+    markerTopRight.css('position', 'absolute')
+    markerTopRight.css('right', '4px')
+    markerTopRight.css('top', '4px')
+    markerTopRight.css('width', '1px')
+    markerTopRight.css('height', '1px')
+    markerTopRight.css('background-color', 'rgb(255,0,255)')
+    markerTopRight.css('z-index', '999')
+
+    body.append('<div id="marker-bottom-left"></div>')
+    let markerBottomLeft = $('#marker-bottom-left')
+    markerBottomLeft.css('position', 'absolute')
+    markerBottomLeft.css('left', '4px')
+    markerBottomLeft.css('bottom', '4px')
+    markerBottomLeft.css('width', '1px')
+    markerBottomLeft.css('height', '1px')
+    markerBottomLeft.css('background-color', 'rgb(255,0,255)')
+    markerBottomLeft.css('z-index', '999')
+
+    body.append('<div id="marker-bottom-right"></div>')
+    let markerBottomRight = $('#marker-bottom-right')
+    markerBottomRight.css('position', 'absolute')
+    markerBottomRight.css('right', '4px')
+    markerBottomRight.css('bottom', '4px')
+    markerBottomRight.css('width', '1px')
+    markerBottomRight.css('height', '1px')
+    markerBottomRight.css('background-color', 'rgb(255,0,255)')
+
     $.ajax({
         type: "POST",
         url: window.location.protocol + "//" + window.location.hostname + ":5000/post_viewport_size",
