@@ -79,22 +79,6 @@ $(document).ready(function(){
             console.log(errMsg);
         }
     })
-    $(window).resize(function() {
-        viewport_size = [$(window).width(), $(window).height()]
-        $.ajax({
-            type: "POST",
-            url: window.location.protocol + "//" + window.location.hostname + ":5000/post_viewport_size",
-            data: JSON.stringify(viewport_size),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function(data){
-                console.log(data)
-            },
-            failure: function(errMsg) {
-                console.log(errMsg);
-            }
-        })
-    })
 
 
     let url = new URL(window.location.href)
