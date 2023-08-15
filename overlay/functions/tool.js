@@ -68,7 +68,7 @@ $(document).ready(function(){
 
     $.ajax({
         type: "POST",
-        url: window.location.protocol + "//" + window.location.hostname + ":5000/post_viewport_size",
+        url: window.location.protocol + "//" + window.location.hostname + ":8669/post_viewport_size",
         data: JSON.stringify(viewport_size),
         contentType: "application/json; charset=utf-8",
         dataType: "json",

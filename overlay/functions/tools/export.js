@@ -4,7 +4,7 @@ const Export = (hostname) => {
     $('#loading-toast').css('opacity', '1')
     $('#loading-toast-p').css('opacity', '1')
     $.ajax({
-        url: window.location.protocol + "//" + window.location.hostname + ":5000/export_to_pdf",
+        url: window.location.protocol + "//" + window.location.hostname + ":8669/export_to_pdf",
         type: 'POST',
         data: JSON.stringify(hostname),
         contentType: "application/json; charset=utf-8",
@@ -22,7 +22,7 @@ function callback(){
     $('#loading-toast-p').css('opacity', '0')
 
     var xhr = new XMLHttpRequest()
-    xhr.open('POST', window.location.protocol + "//" + window.location.hostname + ":5000/get_exported_pdf")
+    xhr.open('POST', window.location.protocol + "//" + window.location.hostname + ":8669/get_exported_pdf")
     xhr.responseType = 'blob'
     xhr.setRequestHeader('Content-type', 'application/json')
     xhr.send(JSON.stringify(window.location.hostname))

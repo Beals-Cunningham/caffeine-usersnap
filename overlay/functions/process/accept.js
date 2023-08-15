@@ -7,7 +7,7 @@ const Accept = (site) => {
 import {Clear} from '/overlay/functions/tool'
 
 function postToPython(site){
-    let url = window.location.protocol + "//" + window.location.hostname + ":5000" + "?site=" + site
+    let url = window.location.protocol + "//" + window.location.hostname + ":8669" + "?site=" + site
     $('#loading-toast').css('width', 'auto')
     $('#loading-toast').css('opacity', '1')
     $('#loading-toast-p').css('opacity', '1')
@@ -28,7 +28,7 @@ function callback(data){
     $('#loading-toast').css('opacity', '0')
     $('#loading-toast-p').css('opacity', '0')
     $.ajax({
-        url: window.location.protocol + "//" + window.location.hostname + ":5000/save",
+        url: window.location.protocol + "//" + window.location.hostname + ":8669/save",
         type: 'GET',
         success: function(data){
             console.log(data)
